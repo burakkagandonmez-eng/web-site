@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eczane Asistan - Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💊</text></svg>">
+</head>
+<body>
+    <!-- Canvas for Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">💊</div>
+                <div class="logo-text">
+                    <h1 class="brand-name">Eczane Asistan</h1>
+                    <span class="demo-badge">DEMO</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Demo Area -->
+    <main class="main-content">
+        <div class="demo-container">
+            <div class="demo-header">
+                <h2 class="demo-title">Sesli AI Asistan</h2>
+                <p class="demo-subtitle">Eczane konularında size yardımcı olmaktan mutluluk duyarım</p>
+            </div>
+
+            <!-- Main Voice Button -->
+            <div class="voice-button-container">
+                <button class="neon-voice-button" id="voiceButton" aria-label="Sesli komut başlat">
+                    <div class="button-bg"></div>
+                    <div class="button-content">
+                        <svg class="microphone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        <span class="button-text" id="buttonText">TIKLA KONUŞ</span>
+                    </div>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+
+            <!-- Status Indicator -->
+            <div class="status-container">
+                <div class="status-indicator" id="statusIndicator">
+                    <div class="status-dot"></div>
+                    <span class="status-text" id="statusText">Hazır</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Bu demo, Eczane Asistan sesli asistanının test sürümüdür.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
