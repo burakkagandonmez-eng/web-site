@@ -35,21 +35,35 @@
                 <p class="demo-subtitle">Eczane konularında size yardımcı olmaktan mutluluk duyarım</p>
             </div>
 
-            <!-- Main Voice Button -->
+            <!-- Main Voice Button (Triggers Widget) -->
             <div class="voice-button-container">
-                <button class="neon-voice-button" id="voiceButton" aria-label="Sesli komut başlat">
-                    <div class="button-bg"></div>
-                    <div class="button-content">
-                        <svg class="microphone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                            <line x1="12" y1="19" x2="12" y2="23"></line>
-                            <line x1="8" y1="23" x2="16" y2="23"></line>
-                        </svg>
+                <button class="main-voice-button" id="voiceButton" aria-label="Sesli asistanı başlat">
+                    <div class="button-outer-glow"></div>
+                    <div class="button-inner">
+                        <div class="button-icon">
+                            <svg class="microphone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                        </div>
                         <span class="button-text" id="buttonText">TIKLA KONUŞ</span>
                     </div>
-                    <div class="button-glow"></div>
                 </button>
+            </div>
+
+            <!-- Call Duration Display -->
+            <div class="call-duration-container" id="callDurationContainer" style="display: none;">
+                <div class="duration-display">
+                    <div class="duration-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <span class="duration-text" id="durationText">00:00</span>
+                </div>
             </div>
 
             <!-- Status Indicator -->
@@ -67,6 +81,34 @@
         <p>Bu demo, Eczane Asistan sesli asistanının test sürümüdür.</p>
     </footer>
 
+    <!-- Vapi Widget - Integrated and Visible -->
+    <vapi-widget 
+        id="vapiWidget"
+        public-key="ef32a2d0-df9d-4c2c-a540-06fe732a0ea8"
+        assistant-id="791ae05f-4869-4e5a-bded-809f2b861e47"
+        mode="voice"
+        theme="dark"
+        base-bg-color="#000000"
+        accent-color="#14B8A6"
+        cta-button-color="#14B8A6"
+        cta-button-text-color="#ffffff"
+        border-radius="large"
+        size="full"
+        position="bottom-right"
+        start-button-text="Start"
+        end-button-text="End Call"
+        chat-first-message="Merhaba! Size eczane konularında nasıl yardımcı olabilirim?"
+        chat-placeholder="Sorunuzu yazın veya sesli konuşun..."
+        voice-show-transcript="true"
+        consent-required="true"
+        consent-title="Kullanım Şartları"
+        consent-content="Bu demo ile etkileşime geçerek, iletişimlerinizin kaydedilmesini kabul etmiş olursunuz."
+        consent-storage-key="vapi_widget_consent"
+        style="position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 400px; height: 500px; opacity: 1; pointer-events: auto; transform: scale(0.8); transition: all 0.3s ease;"
+    ></vapi-widget>
+
+    <!-- Vapi Widget Script -->
+    <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
     <script src="script.js"></script>
 </body>
 </html>
