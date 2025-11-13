@@ -9,7 +9,7 @@ Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web s
 - **Neon renkler**: Kırmızı (#ff0040), Mavi (#00a8ff), Aqua (#00ffff)
 - **Gelişmiş neon başlıklar**: Hero title, bölüm başlıkları parıldayan neon efektler
 - **Neon logo & badge**: `logo.png` logosu kullanıldı, brand name ve badge animasyonlu glow efektleri
-- Canvas tabanlı **animasyonlu parçacık sistemi** (performans optimize edildi)
+- Canvas tabanlı **animasyonlu parçacık sistemi** (mouse takibi kaldırıldı, yavaş hareketli)
 - **Mouse takibi** ve **bağlantı çizgileri** efekti
 - Inter font ailesi ile modern tipografi
 - Responsive design (mobil/tablet/desktop)
@@ -17,7 +17,7 @@ Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web s
 
 ### UI/UX Bileşenleri
 - **Sabit header**: Logo, navigasyon menüsü ve mobil hamburger menü
-- **Mobil Navigasyon**: Hamburger menü ile açılan tam ekran menü
+- **Mobil Navigasyon**: Hamburger menü ile açılan tam ekran menü (Hizmetler, Özellikler, Panel, İletişim)
 - **Hero section**: Ana başlık ve CTA butonları
 - **Hizmetler grid**: 4 ana hizmet kartı
 - **Özellikler bölümü**: 4 tıklanabilir avantaj kartı
@@ -63,18 +63,19 @@ Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web s
 - ✅ **Koyu Calendly teması** - Kompakt widget tasarımı
 - ✅ **Loading animasyonu** - Yüklenme süreci görsel geri bildirim
 - ✅ **Optimize boyutlar** - 500px height, responsive tasarım
-- ✅ **Mobil navigasyon** - Hamburger menü ile tam ekran menü
+- ✅ **Mobil navigasyon** - Hamburger menü ile tam ekran menü (performans optimize edildi)
 
 ## 📱 Responsive Layout
 
 ### Ana Bölümler
 1. **Header** - Logo, navigasyon, mobil hamburger menü
-2. **Hero Section** - Başlık, açıklama ve CTA butonları
-3. **Services** - 4 hizmet kartı grid düzeni
-4. **Features** - 4 tıklanabilir avantaj kartı
-5. **Panel** - CRM paneli görseli ve açıklaması
-6. **Contact** - İletişim bilgileri ve form
-7. **Footer** - Linkler ve ek bilgiler
+2. **Mobil Navigasyon Overlay** - Tam ekran menü (Hizmetler, Özellikler, Panel, İletişim)
+3. **Hero Section** - Başlık, açıklama ve CTA butonları
+4. **Services** - 4 hizmet kartı grid düzeni
+5. **Features** - 4 tıklanabilir avantaj kartı
+6. **Panel** - CRM paneli görseli ve açıklaması
+7. **Contact** - İletişim bilgileri ve form
+8. **Footer** - Linkler ve ek bilgiler
 
 ### Breakpoint'ler
 - **Desktop (1024px+)**: Tam grid görünümü, 800px Calendly
@@ -229,7 +230,7 @@ curl -I https://agent-clinics.com
 ## 🔍 Test Senaryoları
 
 ### Temel Fonksiyonlar
-- [x] Sayfa yükleme ve particle animasyonu
+- [x] Sayfa yükleme ve particle animasyonu (optimize edildi)
 - [x] Navigation smooth scrolling
 - [x] Hamburger menü açma/kapama
 - [x] Mobil navigasyon linklerine tıklama
@@ -241,7 +242,7 @@ curl -I https://agent-clinics.com
 - [x] Hero title neon glow
 - [x] Service cards fade-in and styled
 - [x] Feature cards clickable and styled
-- [x] Particle system performance (optimized)
+- [x] Particle system performance (no mouse tracking, slow movement)
 - [x] Button hover animations
 - [x] Success message popup
 

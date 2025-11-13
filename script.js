@@ -29,8 +29,8 @@ class ParticleSystem {
             const size = Math.random() * 3 + 1;
             const x = Math.random() * this.canvas.width;
             const y = Math.random() * this.canvas.height;
-            const speedX = (Math.random() - 0.5) * 0.5;
-            const speedY = (Math.random() - 0.5) * 0.5;
+            const speedX = (Math.random() - 0.5) * 0.1;
+            const speedY = (Math.random() - 0.5) * 0.1;
             const color = this.colors[Math.floor(Math.random() * this.colors.length)];
             
             this.particles.push({ x, y, size, speedX, speedY, color });
@@ -85,30 +85,7 @@ class ParticleSystem {
     }
     
     connectToMouse() {
-        if (this.mouse.x === null || this.mouse.y === null) return;
-        
-        this.particles.forEach(particle => {
-            const dx = this.mouse.x - particle.x;
-            const dy = this.mouse.y - particle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < this.mouse.radius) {
-                const opacity = 1 - (distance / this.mouse.radius);
-                this.ctx.strokeStyle = `rgba(0, 255, 255, ${opacity * 0.5})`;
-                this.ctx.lineWidth = 1;
-                this.ctx.beginPath();
-                this.ctx.moveTo(particle.x, particle.y);
-                this.ctx.lineTo(this.mouse.x, this.mouse.y);
-                this.ctx.stroke();
-                
-                // Move particle towards mouse
-                const force = (this.mouse.radius - distance) / this.mouse.radius;
-                const directionX = dx / distance;
-                const directionY = dy / distance;
-                particle.x += directionX * force * 2;
-                particle.y += directionY * force * 2;
-            }
-        });
+        // Mouse tracking removed for performance
     }
     
     updateParticles() {
@@ -135,7 +112,7 @@ class ParticleSystem {
         
         this.drawParticles();
         this.connectParticles();
-        this.connectToMouse();
+        // this.connectToMouse(); // Removed for performance
         this.updateParticles();
         
         requestAnimationFrame(() => this.animate());
