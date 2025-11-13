@@ -1,96 +1,114 @@
-# Eczane Asistan - Vapi Widget Demo
+# Agent Clinics - CRM Otomasyonu & Randevu Sistemi
 
-Dark tema ve animasyonlu parçacık efektleri ile tasarlanmış, **Vapi Widget** kullanan gerçek çalışan Eczane Asistan demo sayfası.
+Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web sitesi. WhatsApp, Instagram, Web Chat ve Sesli Asistan hizmetleri sunarak kliniklerin randevu oluşturmasını ve satışlarını artırmasını sağlar.
 
 ## 🎨 Tasarım Özellikleri
 
-### Dark Theme & Animasyonlar
-- **Siyah-koyu gri** ana tema
-- **Mavi (#3B82F6)** ve **mor (#8B5CF6)** accent renkler
+### Neon Theme & Animasyonlar
+- **Siyah-koyu renkli** ana tema
+- **Neon renkler**: Kırmızı (#ff0040), Mavi (#00a8ff), Aqua (#00ffff)
+- **Gelişmiş neon başlıklar**: Hero title, bölüm başlıkları parıldayan neon efektler
+- **Neon logo & badge**: `logo.png` logosu kullanıldı, brand name ve badge animasyonlu glow efektleri
 - Canvas tabanlı **animasyonlu parçacık sistemi**
 - **Mouse takibi** ve **bağlantı çizgileri** efekti
 - Inter font ailesi ile modern tipografi
 - Responsive design (mobil/tablet/desktop)
+- **Daraltılmış header**: Daha şık ve kompakt üst bölüm
 
 ### UI/UX Bileşenleri
-- **Köşe widget**: Sağ alt köşede Vapi widget
-- **Gizli süre gösterimi**: Konuşma başladığında görünen kırmızı sayaç
-- **Scroll animasyonları**: Elementler sayfa kaydırıldıkça belirecek
-- **Merkezi bilgilendirme**: Özellikler ve kullanım talimatları
+- **Sabit header**: Logo ve navigasyon menüsü
+- **Hero section**: Ana başlık ve CTA butonları
+- **Hizmetler grid**: 4 ana hizmet kartı
+- **Özellikler bölümü**: 4 tıklanabilir avantaj kartı
+- **Panel**: `crm.png` görseli ile yönetim paneli tanıtımı
+- **Toplantı Oluştur**: Kompakt Calendly widget entegrasyonu
+- **Footer**: Linkler ve iletişim bilgileri
 
-## 🤖 Vapi Widget Entegrasyonu
+## 🚀 Ana Özellikler
 
-### Widget Konfigürasyonu
-```html
-<vapi-widget
-    public-key="ef32a2d0-df9d-4c2c-a540-06fe732a0ea8"
-    assistant-id="791ae05f-4869-4e5a-bded-809f2b861e47"
-    mode="chat"
-    theme="dark"
-    base-bg-color="#000000"
-    accent-color="#3B82F6"
-    title="TALK WITH AI"
-    start-button-text="TIKLA KONUŞ"
-    end-button-text="BITIR"
-    voice-show-transcript="false"
-    consent-required="true"
-/>
-```
+### CRM Otomasyon Hizmetleri
+1. **WhatsApp CRM Otomasyonu**
+   - WhatsApp Business API entegrasyonu
+   - Otomatik randevu oluşturma
+   - Takip mesajları
+   - Müşteri yönetimi
 
-### Özellikler
-- ✅ **Gerçek çalışan sistem**: Vapi widget kullanıyor
-- ✅ **Chat + Voice**: Hem yazılı hem sesli etkileşim
-- ✅ **Dark tema uyumu**: Siyah-mavi renk paleti
-- ✅ **Türkçe arayüz**: Türkçe metinler
-- ✅ **Consent management**: Kullanıcı onayı sistemi
-- ✅ **Transkript kapalı**: `voice-show-transcript="false"`
+2. **Instagram CRM Sistemi**
+   - Instagram DM otomasyonu
+   - Anında müşteri cevapları
+   - Randevu alma sistemi
+   - Sosyal medya entegrasyonu
 
-### Call Duration Sistemi
-- **Gizli gösterim**: Konuşma başladığında sağ üstte çıkan kırmızı süre sayacı
-- **Gerçek zamanlı**: Her saniye güncellenen MM:SS formatı
-- **Otomatik gizleme**: Konuşma bitince otomatik kayboluyor
-- **Animasyonlu**: Smooth geçiş efektleri
+3. **Web Chat Asistanı**
+   - Web sitesi chat sistemi
+   - 7/24 çalışan bot
+   - Akıllı yanıt sistemi
+   - Lead yakalama
+
+4. **Sesli Asistan CRM**
+   - AI destekli sesli asistan
+   - Telefon randevu yönetimi
+   - Otomatik takvim entegrasyonu
+   - Sesli komut işleme
+
+### Teknik Özellikler
+- ✅ **Particle animasyon sistemi** - Arkaplan efektleri
+- ✅ **Smooth scrolling** - Akıcı sayfa geçişleri
+- ✅ **Scroll animations** - Görsel animasyonlar
+- ✅ **Calendly widget entegrasyonu** - Direkt randevu alma
+- ✅ **CTA management** - Buton etkileşim yönetimi
+- ✅ **Responsive design** - Tüm cihazlarda uyumlu
+- ✅ **Dark neon theme** - Neon renk paleti
+- ✅ **Koyu Calendly teması** - Kompakt widget tasarımı
+- ✅ **Loading animasyonu** - Yüklenme süreci görsel geri bildirim
+- ✅ **Optimize boyutlar** - 500px height, responsive tasarım
 
 ## 📱 Responsive Layout
 
 ### Ana Bölümler
-1. **Header** - Sabit logo ve branding
-2. **Hero Section** - Başlık ve açıklama
-3. **Features Grid** - 3 özellik kartı
-4. **Instructions** - Kullanım talimatları
-5. **Vapi Widget** - Sağ alt köşede sabit
-6. **Duration Widget** - Konuşma sırasında görünür
+1. **Header** - Logo, navigasyon ve branding
+2. **Hero Section** - Başlık, açıklama ve CTA butonları
+3. **Services** - 4 hizmet kartı grid düzeni
+4. **Features** - 4 tıklanabilir avantaj kartı
+5. **Panel** - CRM paneli görseli ve açıklaması
+6. **Contact** - İletişim bilgileri ve form
+7. **Footer** - Linkler ve ek bilgiler
 
 ### Breakpoint'ler
-- **Desktop (1200px+)**: 3 sütunlu feature grid
-- **Tablet (768px-1199px)**: 2 sütunlu feature grid  
-- **Mobile (320px-767px)**: Tek sütun, optimize edilmiş spacing
+- **Desktop (1024px+)**: Tam grid görünümü, 800px Calendly
+- **Tablet (768px-1023px)**: 2 sütunlu düzen, 700px Calendly
+- **Mobile (320px-767px)**: Tek sütun, optimize spacing, 450px Calendly
 
 ## 🎯 Kullanım Akışı
 
 ### 1. Sayfa Yükleme
 ```
-Sayfa açılır → Particle animasyon başlar → Vapi widget yüklenir
+Sayfa açılır → Particle animasyon başlar → Tüm bölümler görünür
 ```
 
-### 2. Konuşma Başlatma
+### 2. Hizmet Keşfi
 ```
-Kullanıcı "TALK WITH AI" butonuna tıklayınca → 
-Mikrofon izni → Widget açılır → Konuşma başlar → 
-Duration widget görünür
-```
-
-### 3. Konuşma Sırasında
-```
-Duration timer çalışır → Vapi asistan cevap verir → 
-Kullanıcı konuşmaya devam edebilir
+Kullanıcı scroll yapar → Services bölümü animasyonlu görünür → 
+Her kart hover'da yükselir ve neon efekt alır
 ```
 
-### 4. Konuşma Bitişi
+### 3. Özellikler Keşfi
 ```
-"End Call" tıklandığında → Duration widget kaybolur → 
-Timer durur
+Kullanıcı özellik kartlarına tıklar → Contact bölümüne yönlendirilir → 
+Her kart hover'da yükselir ve neon efekt alır
 ```
+
+
+
+### 4. Toplantı Oluşturma
+```
+"Toplantı Oluştur" butonuna tıklandığında → Contact bölümüne scroll → 
+Calendly widget'ı görünür → Direkt randevu oluşturulur
+```
+
+### Contact Bölümü Güncellemesi
+- Başlık: "Tanışma & Kurulum Toplantısı"
+- Açıklama: "Sistemin nasıl çalıştığını ve kurulum detaylarını konuşmak için hemen randevu oluşturun."
 
 ## 🛠️ Teknik Mimari
 
@@ -99,117 +117,129 @@ Timer durur
 // Particle animasyon sistemi
 class ParticleSystem { ... }
 
-// Vapi widget entegrasyonu
-class EczaneAsistanWidget { ... }
+// Smooth scrolling yönetimi
+class SmoothScrolling { ... }
 
-// Scroll animasyon yönetimi  
+// Scroll animasyon yönetimi
 class ScrollAnimations { ... }
 
-// Smooth scrolling
-class SmoothScrolling { ... }
+// Calendly widget yönetimi
+class CalendlyManager { ... }
+
+// Toplantı buton yönetimi
+class CTAManagement { ... }
 ```
 
 ### Event Handling
 ```javascript
-// Widget event'leri
-widget.addEventListener('call-start', handleCallStart);
-widget.addEventListener('call-end', handleCallEnd);
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(...);
 
-// Fallback state monitoring
-setInterval(checkWidgetState, 1000);
+// Scroll animations
+const observer = new IntersectionObserver(...);
+
+// Calendly initialization
+waitForCalendly() → initializeCalendly()
+
+// Toplantı buton interactions
+document.querySelectorAll('.cta-button').forEach(...);
 ```
 
-### Duration Management
+### Animation System
 ```javascript
-startDurationTimer() → setInterval(updateDuration, 1000)
-stopDurationTimer() → clearInterval()
+// Fade in animations
+element.style.opacity = '0';
+element.style.transform = 'translateY(30px)';
+
+// Success message
+success-message fadeIn effect
 ```
 
 ## 🎨 Stil Sistemi
 
 ### Renk Paleti
 ```css
---primary: #3B82F6 (Mavi)
---secondary: #8B5CF6 (Mor)
---accent: #EF4444 (Kırmızı - Duration için)
---bg-primary: #000000 (Ana arkaplan)
---bg-secondary: #1a1a1a (İkincil arkaplan)
+--neon-red: #ff0040
+--neon-blue: #00a8ff  
+--neon-cyan: #00ffff
+--bg-primary: #000000
+--bg-secondary: rgba(0,0,0,0.8)
+--text-primary: #ffffff
+--text-secondary: #a1a1aa
+--text-muted: #71717a
 ```
 
 ### Animation Tokens
 ```css
 --transition-fast: 0.3s ease
 --transition-medium: 0.6s ease
---border-radius: 16px
---shadow-strong: 0 20px 60px rgba(0,0,0,0.5)
+--border-radius: 20px
+--shadow-glow: 0 0 30px rgba(0, 255, 255, 0.3)
 ```
 
-## 🔧 Widget Özelleştirme
-
-### CSS Custom Properties
+### Component Styles
 ```css
-vapi-widget::part(container) {
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+// Cards
+.service-card {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 255, 0.2);
 }
 
-vapi-widget::part(button) {
-    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+// Buttons
+.cta-button.primary {
+    background: linear-gradient(135deg, #ff0040, #00a8ff);
+    box-shadow: 0 8px 32px rgba(255, 0, 64, 0.3);
+}
+
+// Hover Effects
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 255, 255, 0.2);
 }
 ```
-
-### Widget Konfigürasyon Parametreleri
-- `public-key`: API anahtarı
-- `assistant-id`: Asistan ID'si
-- `theme`: `dark` (sabit)
-- `accent-color`: `#3B82F6` (tema rengi)
-- `start-button-text`: `"TIKLA KONUŞ"`
-- `end-button-text`: `"BITIR"`
-- `voice-show-transcript`: `"false"` (transkript kapalı)
 
 ## 📦 Dosya Yapısı
 
 ```
-├── index.html          # Ana HTML + Vapi widget
-├── styles.css          # Dark theme + Responsive
-├── script.js           # Widget entegrasyonu + Animasyonlar
+├── index.html          # Ana HTML - Tüm bölümler
+├── styles.css          # Neon theme + Responsive CSS
+├── script.js           # Animasyon sistemi + Etkileşimler
 └── README.md           # Bu dokümantasyon
 ```
 
 ## 🚀 Deployment
 
 ### Hosting Gereksinimleri
-1. **HTTPS zorunlu**: Vapi widget için güvenli bağlantı
-2. **Mikrofon izinleri**: Browser mikrofon erişimi
-3. **Vapi API limitleri**: Rate limiting kontrolü
+1. **HTTPS önerilen**: Modern browser uyumluluğu
+2. **Modern browsers**: Chrome 80+, Safari 13+, Firefox 75+
+3. **Responsive testing**: Mobile, tablet, desktop testleri
 
 ### Hosting Adımları
 ```bash
 # Dosyaları web sunucusuna yükle
-cp *.html *.css *.js /var/www/demo/
+cp *.html *.css *.js /var/www/agent-clinics/
 
-# SSL sertifikası ayarla
-certbot --nginx -d demo.eczaneasistan.com
-
-# HTTPS ile test et
-curl -I https://demo.eczaneasistan.com
+# HTTPS ile test et (opsiyonel)
+curl -I https://agent-clinics.com
 ```
 
 ## 🔍 Test Senaryoları
 
 ### Temel Fonksiyonlar
 - [x] Sayfa yükleme ve particle animasyonu
-- [x] Vapi widget görünümü
-- [x] "TALK WITH AI" butonuna tıklama
-- [x] Mikrofon izni istemi
-- [x] Konuşma başlatma
+- [x] Navigation smooth scrolling
+- [x] Services hover efektleri
+- [x] Calendly widget yükleme ve görüntüleme
+- [x] Calendly widget yükleme ve görüntüleme
+- [x] Toplantı Oluştur buton etkileşimleri
 
-### Duration Sistemi
-- [x] Konuşma başlangıcında gösterim
-- [x] Gerçek zamanlı sayaç (00:00 → 01:23)
-- [x] Konuşma bitiminde gizleme
-- [x] Animasyonlu geçişler
+### Animasyon Test
+- [x] Hero title neon glow
+- [x] Service cards fade-in and styled
+- [x] Feature cards clickable and styled
+- [x] Button hover animations
+- [x] Success message popup
 
 ### Responsive Test
 - [x] Desktop (1920x1080)
@@ -219,33 +249,35 @@ curl -I https://demo.eczaneasistan.com
 
 ## 🐛 Troubleshooting
 
-### Widget Yüklenmiyor
+### Particle Animasyon Çalışmıyor
 ```javascript
 // Developer tools'ta kontrol et
-console.log(document.querySelector('vapi-widget'));
+console.log(particleSystem);
+console.log(canvas.width, canvas.height);
 ```
 
-### Mikrofon İzni Reddedildi
+### Scroll Animasyonlar Çalışmıyor
 ```javascript
-// Kullanıcıya uygun mesaj göster
-navigator.permissions.query({name: 'microphone'});
+// Intersection Observer kontrolü
+console.log(IntersectionObserver);
 ```
 
-### Duration Gösterilmiyor
+### Calendly Widget Yüklenmiyor
 ```javascript
-// Debug modu aktifleştir
-localStorage.setItem('vapi-debug', 'true');
+// Calendly script kontrolü
+console.log('Calendly loaded:', typeof Calendly !== 'undefined');
+console.log('Widget element:', document.querySelector('.calendly-inline-widget'));
 ```
 
 ## 📈 Gelecek Geliştirmeler
 
 ### Planlanan Özellikler
-- [ ] **Eczane veritabanı entegrasyonu**
-- [ ] **Reçete yazma asistanı**
-- [ ] **İlaç etkileşim kontrolü**
-- [ ] **Çoklu dil desteği (İngilizce)**
-- [ ] **Call analytics dashboard**
-- [ ] **Voice command shortcuts**
+- [ ] **CRM dashboard entegrasyonu**
+- [ ] **Gerçek zamanlı chat widget**
+- [ ] **Müşteri testimonial slider**
+- [ ] **Case study bölümü**
+- [ ] **Blog/Resource section**
+- [ ] **Gelişmiş Calendly özelleştirmesi**
 
 ### Teknik İyileştirmeler
 - [ ] **Progressive Web App (PWA)**
@@ -256,30 +288,43 @@ localStorage.setItem('vapi-debug', 'true');
 
 ## 🔒 Güvenlik & Gizlilik
 
-### Veri Koruma
-- **GDPR uyumlu** consent sistemi
-- **End-to-end encryption** Vapi tarafından
-- **Local storage** sadece consent key'i
-- **No data logging** kulanıcı konuşmaları
+### Form Güvenliği
+- **HTTPS zorunlu**: Form verilerinin güvenli iletimi
+- **Input validation**: Tüm alanlar için doğrulama
+- **CSRF protection**: Form güvenlik token'ları
+- **Rate limiting**: Spam koruması
 
-### API Güvenliği
-- **Rate limiting** Vapi tarafından yönetiliyor
-- **HTTPS only** zorunlu
-- **CORS policy** uyumlu
-- **XSS protection** mevcut
+### Browser Uyumluluğu
+- **Modern browsers**: ES6+ features kullanımı
+- **Fallback support**: Eski browser'lar için temel işlevsellik
+- **Progressive enhancement**: Temel özellikler her zaman çalışır
 
 ## 📞 Destek & İletişim
 
 ### Teknik Destek
-- **Demo URL**: `https://demo.eczaneasistan.com`
-- **Vapi Docs**: [docs.vapi.ai](https://docs.vapi.ai)
-- **Email**: `support@eczaneasistan.com`
+- **Demo URL**: `https://agent-clinics.com`
+- **Email**: `burakkagandonmez@agentclinics.com`
+- **Phone**: `+90 (850) 840-1384`
 
 ### Development
-- **Widget SDK**: `@vapi-ai/client-sdk-react`
-- **Version**: `widget.umd.js`
-- **Browser Support**: Chrome 90+, Safari 14+, Edge 90+
+- **Browser Support**: Chrome 80+, Safari 13+, Firefox 75+
+- **Responsive**: Mobile-first approach
+- **Performance**: Optimized animations and interactions
+
+## 🎯 CRM Otomasyonu Hedefleri
+
+### Müşteri Kazanımı
+- **Lead yakalama**: Web chat ve form sistemi
+- **Otomatik takip**: WhatsApp ve Instagram CRM
+- **Randevu optimizasyonu**: 7/24 hizmet
+- **Satış artışı**: %300 hedeflenen artış
+
+### Klinik İhtiyaçları
+- **Zaman tasarrufu**: Otomatik randevu yönetimi
+- **Müşteri memnuniyeti**: Hızlı cevap sistemi
+- **Gelir artışı**: Kaçırılan müşteri azaltma
+- **Verimlilik**: Tek platform yönetimi
 
 ---
 
-**Eczane Asistan Widget Demo** - AI destekli gerçek sesli eczane asistanı
+**Agent Clinics** - Klinikleriniz için akıllı CRM otomasyonu ve randevu sistemi

@@ -5,7 +5,7 @@ class ParticleSystem {
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
         this.mouse = { x: null, y: null, radius: 150 };
-        this.colors = ['#14B8A6', '#0d9488', '#1d4ed8', '#7c3aed'];
+        this.colors = ['#ff0040', '#00a8ff', '#00ffff', '#ff0040'];
         
         this.init();
         this.animate();
@@ -73,7 +73,7 @@ class ParticleSystem {
                 
                 if (distance < 120) {
                     const opacity = 1 - (distance / 120);
-                    this.ctx.strokeStyle = `rgba(20, 184, 166, ${opacity * 0.2})`;
+                    this.ctx.strokeStyle = `rgba(0, 255, 255, ${opacity * 0.2})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
@@ -94,7 +94,7 @@ class ParticleSystem {
             
             if (distance < this.mouse.radius) {
                 const opacity = 1 - (distance / this.mouse.radius);
-                this.ctx.strokeStyle = `rgba(20, 184, 166, ${opacity * 0.4})`;
+                this.ctx.strokeStyle = `rgba(0, 255, 255, ${opacity * 0.5})`;
                 this.ctx.lineWidth = 1;
                 this.ctx.beginPath();
                 this.ctx.moveTo(particle.x, particle.y);
@@ -142,359 +142,182 @@ class ParticleSystem {
     }
 }
 
-// Eczane Asistan Widget Control System
-class EczaneAsistanWidget {
+// Smooth scrolling for navigation links
+class SmoothScrolling {
     constructor() {
-        this.voiceButton = null;
-        this.buttonText = null;
-        this.statusText = null;
-        this.statusIndicator = null;
-        this.callDurationContainer = null;
-        this.durationText = null;
-        this.vapiWidget = null;
-        
-        this.isCallActive = false;
-        this.callStartTime = null;
-        this.durationInterval = null;
-        this.widgetReady = false;
-        this.widgetVisible = false;
-        
-        this.initializeElements();
-        this.waitForWidget();
+        this.init();
     }
     
-    initializeElements() {
-        this.voiceButton = document.getElementById('voiceButton');
-        this.buttonText = document.getElementById('buttonText');
-        this.statusText = document.getElementById('statusText');
-        this.statusIndicator = document.getElementById('statusIndicator');
-        this.callDurationContainer = document.getElementById('callDurationContainer');
-        this.durationText = document.getElementById('durationText');
-        this.vapiWidget = document.getElementById('vapiWidget');
-        
-        if (this.voiceButton) {
-            this.voiceButton.addEventListener('click', () => this.handleButtonClick());
-        }
-        
-        // Initially hide widget
-        this.hideWidget();
+    init() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     }
-    
-    waitForWidget() {
-        let attempts = 0;
-        const maxAttempts = 30;
-        
-        const checkWidget = () => {
-            attempts++;
-            
-            if (this.vapiWidget && typeof window.VapiWidget !== 'undefined') {
-                console.log('Vapi widget loaded');
-                this.widgetReady = true;
-                this.updateStatus('Hazır');
-                this.setupWidgetEvents();
-                return;
-            }
-            
-            if (attempts < maxAttempts) {
-                setTimeout(checkWidget, 300);
-            } else {
-                console.warn('Widget not loaded, using fallback');
-                this.widgetReady = true;
-                this.updateStatus('Hazır');
-            }
+}
+
+// Scroll animations for sections
+class ScrollAnimations {
+    constructor() {
+        this.observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
         
-        checkWidget();
+        this.init();
     }
     
-    setupWidgetEvents() {
-        if (!this.vapiWidget) return;
+    init() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, this.observerOptions);
         
-        // Listen for widget events
-        this.vapiWidget.addEventListener('call-start', () => {
-            console.log('Widget call started');
-            this.onCallStart();
-        });
-        
-        this.vapiWidget.addEventListener('call-end', () => {
-            console.log('Widget call ended');
-            this.onCallEnd();
-        });
-        
-        this.vapiWidget.addEventListener('error', (error) => {
-            console.error('Widget error:', error);
-            this.onCallError(error);
-        });
-        
-        // Also listen for state changes
-        this.vapiWidget.addEventListener('state-change', (event) => {
-            console.log('Widget state changed:', event.detail);
-            this.handleWidgetStateChange(event.detail);
+        // Observe all sections and cards
+        document.querySelectorAll('section, .service-card, .feature-item, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     }
-    
-    async handleButtonClick() {
-        console.log('Button clicked, widget visible:', this.widgetVisible);
-        
-        if (!this.widgetReady) {
-            this.updateStatus('Başlatılıyor...');
-            return;
-        }
-        
-        if (this.widgetVisible) {
-            // Hide widget
-            this.hideWidget();
-            this.updateButtonState('inactive');
-            this.updateStatus('Hazır');
-            this.buttonText.textContent = 'TIKLA KONUŞ';
-        } else {
-            // Show widget
-            this.showWidget();
-            this.updateButtonState('active');
-            this.updateStatus('Asistan Hazır');
-            this.buttonText.textContent = 'KONUŞ';
-        }
+}
+
+// Calendly Widget Handling
+class CalendlyManager {
+    constructor() {
+        this.init();
     }
     
-    showWidget() {
-        console.log('Showing widget');
-        this.widgetVisible = true;
-        
-        if (this.vapiWidget) {
-            this.vapiWidget.style.opacity = '1';
-            this.vapiWidget.style.pointerEvents = 'auto';
-            this.vapiWidget.style.transform = 'scale(1)';
-            this.vapiWidget.style.zIndex = '1000';
-        }
+    init() {
+        // Wait for Calendly to load
+        this.waitForCalendly();
     }
     
-    hideWidget() {
-        console.log('Hiding widget');
-        this.widgetVisible = false;
-        
-        if (this.vapiWidget) {
-            this.vapiWidget.style.opacity = '0';
-            this.vapiWidget.style.pointerEvents = 'none';
-            this.vapiWidget.style.transform = 'scale(0.8)';
-            this.vapiWidget.style.zIndex = '1';
-        }
-        
-        // Stop any active call
-        if (this.isCallActive) {
-            this.onCallEnd();
-        }
-    }
-    
-    handleWidgetStateChange(state) {
-        console.log('Handling widget state change:', state);
-        
-        switch (state) {
-            case 'idle':
-            case 'ready':
-                this.onCallEnd();
-                break;
-            case 'calling':
-            case 'speaking':
-            case 'listening':
-                this.onCallStart();
-                break;
-            case 'ended':
-            case 'error':
-                this.onCallEnd();
-                break;
-        }
-    }
-    
-    onCallStart() {
-        console.log('Handling call start');
-        this.isCallActive = true;
-        this.callStartTime = Date.now();
-        
-        // Update UI
-        this.updateButtonState('active');
-        this.updateStatus('Aktif Görüşme');
-        this.buttonText.textContent = 'KONUŞUYOR';
-        
-        // Show duration display
-        if (this.callDurationContainer) {
-            this.callDurationContainer.style.display = 'flex';
-        }
-        
-        // Start duration timer
-        this.startDurationTimer();
-    }
-    
-    onCallEnd() {
-        console.log('Handling call end');
-        this.isCallActive = false;
-        this.callStartTime = null;
-        
-        // Update UI
-        this.updateButtonState('inactive');
-        this.updateStatus('Asistan Hazır');
-        this.buttonText.textContent = 'KONUŞ';
-        
-        // Hide duration display
-        if (this.callDurationContainer) {
-            this.callDurationContainer.style.display = 'none';
-        }
-        
-        // Stop duration timer
-        this.stopDurationTimer();
-    }
-    
-    onCallError(error) {
-        console.log('Handling call error:', error);
-        this.isCallActive = false;
-        this.callStartTime = null;
-        
-        // Update UI
-        this.updateButtonState('error');
-        this.updateStatus('Bağlantı hatası');
-        this.buttonText.textContent = 'KONUŞ';
-        
-        // Hide duration display
-        if (this.callDurationContainer) {
-            this.callDurationContainer.style.display = 'none';
-        }
-        
-        // Stop duration timer
-        this.stopDurationTimer();
-        
-        // Reset after 3 seconds
-        setTimeout(() => {
-            this.updateButtonState('inactive');
-            this.updateStatus('Asistan Hazır');
-        }, 3000);
-    }
-    
-    updateButtonState(state) {
-        if (!this.voiceButton) return;
-        
-        // Remove all state classes
-        this.voiceButton.classList.remove('active', 'error');
-        
-        // Add appropriate state class
-        if (state === 'active') {
-            this.voiceButton.classList.add('active');
-        } else if (state === 'error') {
-            this.voiceButton.classList.add('error');
-        }
-        
-        // Update status indicator
-        if (this.statusIndicator) {
-            this.statusIndicator.classList.remove('active');
-            if (state === 'active') {
-                this.statusIndicator.classList.add('active');
+    waitForCalendly() {
+        const checkCalendly = () => {
+            if (typeof Calendly !== 'undefined') {
+                this.initializeCalendly();
+                return;
             }
-        }
-    }
-    
-    startDurationTimer() {
-        this.durationInterval = setInterval(() => {
-            if (this.callStartTime) {
-                const elapsed = Math.floor((Date.now() - this.callStartTime) / 1000);
-                this.updateDuration(elapsed);
-            }
-        }, 1000);
-    }
-    
-    stopDurationTimer() {
-        if (this.durationInterval) {
-            clearInterval(this.durationInterval);
-            this.durationInterval = null;
-        }
-        if (this.durationText) {
-            this.durationText.textContent = '00:00';
-        }
-    }
-    
-    updateDuration(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        const formatted = `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            setTimeout(checkCalendly, 500);
+        };
         
-        if (this.durationText) {
-            this.durationText.textContent = formatted;
-            // Add animation effect
-            this.durationText.classList.add('animate');
-            setTimeout(() => {
-                this.durationText.classList.remove('animate');
-            }, 200);
-        }
+        checkCalendly();
     }
     
-    updateStatus(text) {
-        if (this.statusText) {
-            this.statusText.textContent = text;
+    initializeCalendly() {
+        // Calendly is now available
+        console.log('Calendly widget loaded successfully');
+        
+        // Add loaded class to remove loading animation
+        const calendlyWidget = document.querySelector('.calendly-inline-widget');
+        if (calendlyWidget) {
+            calendlyWidget.classList.add('loaded');
+        }
+        
+        // Add any additional Calendly configurations here if needed
+        if (window.Calendly) {
+            // You can add event listeners for Calendly events
+            window.addEventListener('message', (e) => {
+                if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+                    console.log('Calendly event:', e.data.event);
+                    // Remove loading state when widget is ready
+                    if (e.data.event === 'calendly.event_scheduled') {
+                        console.log('Appointment scheduled!');
+                    }
+                }
+            });
         }
     }
 }
 
-// Debug function
-function debugSystem() {
-    const widgetSystem = window.widgetSystem;
-    const vapiWidget = document.getElementById('vapiWidget');
-    const vapiLoaded = typeof window.VapiWidget !== 'undefined';
+// CTA Button handling
+class CTAManagement {
+    constructor() {
+        this.init();
+    }
     
-    console.log('=== Widget System Debug ===');
-    console.log('Widget System:', widgetSystem ? '✅ Active' : '❌ Not found');
-    console.log('Vapi Widget:', vapiWidget ? '✅ Found' : '❌ Not found');
-    console.log('Vapi SDK:', vapiLoaded ? '✅ Loaded' : '❌ Not loaded');
-    console.log('Widget Ready:', widgetSystem?.widgetReady ? '✅ Yes' : '❌ No');
-    console.log('Widget Visible:', widgetSystem?.widgetVisible ? '✅ Yes' : '❌ No');
-    console.log('Call Active:', widgetSystem?.isCallActive ? '🔴 Active' : '⚪ Inactive');
-    console.log('Time:', new Date().toISOString());
-    
-    if (vapiWidget) {
-        console.log('Widget Style:', {
-            opacity: vapiWidget.style.opacity,
-            pointerEvents: vapiWidget.style.pointerEvents,
-            transform: vapiWidget.style.transform,
-            position: vapiWidget.style.position
+    init() {
+        document.querySelectorAll('.cta-button, .pricing-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const buttonText = e.target.textContent;
+                
+                if (buttonText === 'Toplantı Oluştur') {
+                    // Scroll to contact section
+                    document.querySelector('#contact').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else if (buttonText === 'Başla' || buttonText === 'İletişim') {
+                    this.handlePricingClick(buttonText);
+                }
+            });
         });
     }
     
-    return {
-        widgetSystem: !!widgetSystem,
-        widgetReady: widgetSystem?.widgetReady || false,
-        widgetVisible: widgetSystem?.widgetVisible || false,
-        callActive: widgetSystem?.isCallActive || false
-    };
+    handlePricingClick(clickType) {
+        // Scroll to contact and highlight contact form
+        const contact = document.querySelector('#contact');
+        contact.scrollIntoView({
+            behavior: 'smooth'
+        });
+        
+        // Add highlighting effect
+        contact.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.3)';
+        setTimeout(() => {
+            contact.style.boxShadow = '';
+        }, 2000);
+    }
 }
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing widget system...');
+    console.log('Agent Clinics website initialized...');
     
     // Initialize particle system
     const particleSystem = new ParticleSystem();
     
-    // Initialize widget control system
-    const widgetSystem = new EczaneAsistanWidget();
+    // Initialize smooth scrolling
+    const smoothScrolling = new SmoothScrolling();
     
-    // Store globally for debugging
-    window.widgetSystem = widgetSystem;
-    window.debugSystem = debugSystem;
+    // Initialize scroll animations
+    const scrollAnimations = new ScrollAnimations();
     
-    console.log('Eczane Asistan Widget System initialized');
-    console.log('Run debugSystem() in console to check status');
+    // Initialize Calendly manager
+    const calendlyManager = new CalendlyManager();
+    
+    // Initialize CTA management
+    const ctaManagement = new CTAManagement();
+    
+    console.log('All systems initialized successfully');
 });
 
 // Handle page visibility changes
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
         console.log('Page hidden');
-        // Hide widget if page is hidden
-        if (window.widgetSystem?.widgetVisible) {
-            window.widgetSystem.hideWidget();
-        }
+    } else {
+        console.log('Page visible');
     }
 });
 
 // Export for debugging
-window.EczaneAsistan = {
+window.AgentClinics = {
     ParticleSystem,
-    EczaneAsistanWidget,
-    debugSystem
+    SmoothScrolling,
+    ScrollAnimations,
+    CalendlyManager,
+    CTAManagement
 };
