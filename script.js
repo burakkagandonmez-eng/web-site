@@ -4,7 +4,7 @@ class ParticleSystem {
         this.canvas = document.getElementById('particleCanvas');
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
-        this.mouse = { x: null, y: null, radius: 150 };
+        this.mouse = { x: null, y: null, radius: 100 };
         this.colors = ['#ff0040', '#00a8ff', '#00ffff', '#ff0040'];
         
         this.init();
@@ -23,7 +23,7 @@ class ParticleSystem {
     }
     
     createParticles() {
-        const numberOfParticles = Math.floor((this.canvas.width * this.canvas.height) / 15000);
+        const numberOfParticles = Math.floor((this.canvas.width * this.canvas.height) / 40000);
         
         for (let i = 0; i < numberOfParticles; i++) {
             const size = Math.random() * 3 + 1;
@@ -282,6 +282,37 @@ class CTAManagement {
     }
 }
 
+// Hamburger Menu and Mobile Nav Handling
+class MobileNavigation {
+    constructor() {
+        this.hamburgerMenu = document.getElementById('hamburgerMenu');
+        this.mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        this.navLinks = this.mobileNavOverlay ? this.mobileNavOverlay.querySelectorAll('.nav-link') : [];
+        this.init();
+    }
+
+    init() {
+        if (this.hamburgerMenu) {
+            this.hamburgerMenu.addEventListener('click', () => this.toggleMenu());
+        }
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => this.closeMenu());
+        });
+    }
+
+    toggleMenu() {
+        this.hamburgerMenu.classList.toggle('active');
+        this.mobileNavOverlay.classList.toggle('active');
+        document.body.classList.toggle('no-scroll'); // Prevent scrolling when menu is open
+    }
+
+    closeMenu() {
+        this.hamburgerMenu.classList.remove('active');
+        this.mobileNavOverlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Agent Clinics website initialized...');
@@ -300,6 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize CTA management
     const ctaManagement = new CTAManagement();
+
+    // Initialize Mobile Navigation
+    const mobileNavigation = new MobileNavigation();
     
     console.log('All systems initialized successfully');
 });

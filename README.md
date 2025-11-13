@@ -9,14 +9,15 @@ Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web s
 - **Neon renkler**: Kırmızı (#ff0040), Mavi (#00a8ff), Aqua (#00ffff)
 - **Gelişmiş neon başlıklar**: Hero title, bölüm başlıkları parıldayan neon efektler
 - **Neon logo & badge**: `logo.png` logosu kullanıldı, brand name ve badge animasyonlu glow efektleri
-- Canvas tabanlı **animasyonlu parçacık sistemi**
+- Canvas tabanlı **animasyonlu parçacık sistemi** (performans optimize edildi)
 - **Mouse takibi** ve **bağlantı çizgileri** efekti
 - Inter font ailesi ile modern tipografi
 - Responsive design (mobil/tablet/desktop)
 - **Daraltılmış header**: Daha şık ve kompakt üst bölüm
 
 ### UI/UX Bileşenleri
-- **Sabit header**: Logo ve navigasyon menüsü
+- **Sabit header**: Logo, navigasyon menüsü ve mobil hamburger menü
+- **Mobil Navigasyon**: Hamburger menü ile açılan tam ekran menü
 - **Hero section**: Ana başlık ve CTA butonları
 - **Hizmetler grid**: 4 ana hizmet kartı
 - **Özellikler bölümü**: 4 tıklanabilir avantaj kartı
@@ -52,7 +53,7 @@ Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web s
    - Sesli komut işleme
 
 ### Teknik Özellikler
-- ✅ **Particle animasyon sistemi** - Arkaplan efektleri
+- ✅ **Particle animasyon sistemi** - Arkaplan efektleri (optimize edildi)
 - ✅ **Smooth scrolling** - Akıcı sayfa geçişleri
 - ✅ **Scroll animations** - Görsel animasyonlar
 - ✅ **Calendly widget entegrasyonu** - Direkt randevu alma
@@ -62,11 +63,12 @@ Neon renkli tasarım ile tasarlanmış, **klinikler için CRM otomasyonu** web s
 - ✅ **Koyu Calendly teması** - Kompakt widget tasarımı
 - ✅ **Loading animasyonu** - Yüklenme süreci görsel geri bildirim
 - ✅ **Optimize boyutlar** - 500px height, responsive tasarım
+- ✅ **Mobil navigasyon** - Hamburger menü ile tam ekran menü
 
 ## 📱 Responsive Layout
 
 ### Ana Bölümler
-1. **Header** - Logo, navigasyon ve branding
+1. **Header** - Logo, navigasyon, mobil hamburger menü
 2. **Hero Section** - Başlık, açıklama ve CTA butonları
 3. **Services** - 4 hizmet kartı grid düzeni
 4. **Features** - 4 tıklanabilir avantaj kartı
@@ -229,8 +231,9 @@ curl -I https://agent-clinics.com
 ### Temel Fonksiyonlar
 - [x] Sayfa yükleme ve particle animasyonu
 - [x] Navigation smooth scrolling
+- [x] Hamburger menü açma/kapama
+- [x] Mobil navigasyon linklerine tıklama
 - [x] Services hover efektleri
-- [x] Calendly widget yükleme ve görüntüleme
 - [x] Calendly widget yükleme ve görüntüleme
 - [x] Toplantı Oluştur buton etkileşimleri
 
@@ -238,6 +241,7 @@ curl -I https://agent-clinics.com
 - [x] Hero title neon glow
 - [x] Service cards fade-in and styled
 - [x] Feature cards clickable and styled
+- [x] Particle system performance (optimized)
 - [x] Button hover animations
 - [x] Success message popup
 
