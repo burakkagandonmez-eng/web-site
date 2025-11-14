@@ -245,17 +245,11 @@ class CTAManagement {
     }
     
     handlePricingClick(clickType) {
-        // Scroll to contact and highlight contact form
+        // Scroll to contact section
         const contact = document.querySelector('#contact');
         contact.scrollIntoView({
             behavior: 'smooth'
         });
-        
-        // Add highlighting effect
-        contact.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.3)';
-        setTimeout(() => {
-            contact.style.boxShadow = '';
-        }, 2000);
     }
 }
 
@@ -290,26 +284,6 @@ class MobileNavigation {
     }
 }
 
-// Parallax Scrolling
-class ParallaxScrolling {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.parallax');
-            
-            parallaxElements.forEach(el => {
-                const speed = el.dataset.speed || 0.5;
-                const yPos = -(scrolled * speed);
-                el.style.transform = `translate3d(0px, ${yPos}px, 0px)`;
-            });
-        });
-    }
-}
-
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Agent Clinics website initialized...');
@@ -327,13 +301,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendlyManager = new CalendlyManager();
     
     // Initialize CTA management
-    const ctaManagement = new CTAMagement();
+    const ctaManagement = new CTAManagement();
 
     // Initialize Mobile Navigation
     const mobileNavigation = new MobileNavigation();
-
-    // Initialize Parallax Scrolling
-    const parallaxScrolling = new ParallaxScrolling();
     
     console.log('All systems initialized successfully');
 });
