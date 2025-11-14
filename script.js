@@ -5,7 +5,7 @@ class ParticleSystem {
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
         this.mouse = { x: null, y: null, radius: 100 };
-        this.colors = ['#ff0040', '#00a8ff', '#00ffff', '#ff0040'];
+        this.colors = ['#B400FF', '#00F6FF'];
         
         this.init();
         this.animate();
@@ -73,7 +73,7 @@ class ParticleSystem {
                 
                 if (distance < 120) {
                     const opacity = 1 - (distance / 120);
-                    this.ctx.strokeStyle = `rgba(0, 255, 255, ${opacity * 0.2})`;
+                    this.ctx.strokeStyle = `rgba(0, 246, 255, ${opacity * 0.2})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
@@ -290,6 +290,26 @@ class MobileNavigation {
     }
 }
 
+// Parallax Scrolling
+class ParallaxScrolling {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                const yPos = -(scrolled * speed);
+                el.style.transform = `translate3d(0px, ${yPos}px, 0px)`;
+            });
+        });
+    }
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Agent Clinics website initialized...');
@@ -307,10 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendlyManager = new CalendlyManager();
     
     // Initialize CTA management
-    const ctaManagement = new CTAManagement();
+    const ctaManagement = new CTAMagement();
 
     // Initialize Mobile Navigation
     const mobileNavigation = new MobileNavigation();
+
+    // Initialize Parallax Scrolling
+    const parallaxScrolling = new ParallaxScrolling();
     
     console.log('All systems initialized successfully');
 });
